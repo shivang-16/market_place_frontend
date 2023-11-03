@@ -11,6 +11,7 @@ import { loadUser } from "../../action/userAction";
 import { logoutUser } from "../../action/userAction";
 import Navbar from "../Navbar/Navbar";
 import { deleteItem } from "../../action/productAction";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({setProgress}) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -26,6 +27,7 @@ const Dashboard = ({setProgress}) => {
   const [imagePreview, setImagePreview] = useState(null);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const openPopup = () => {
     setPopupOpen(true);
   };
@@ -48,8 +50,12 @@ const Dashboard = ({setProgress}) => {
     };
   };
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
+  const handleLogout = async() => {
+    setProgress(10)
+    await dispatch(logoutUser());
+    setProgress(60)
+    navigate('/login')
+    setProgress(100)
   };
 
   const handleAddProduct = async (e) => {

@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../action/userAction";
+import { getProducts } from "../../action/productAction";
 
 const Signup = ({setProgress}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); const { isAuthenticated } = useSelector((state) => state.user);
 
-  const handleSignup = (e) => {
+  const handleSignup = async(e) => {
     setProgress(10)
     e.preventDefault();
-    dispatch(registerUser(name, email, password));
+    await dispatch(registerUser(name, email, password));
+    setProgress(60);
+    await dispatch(getProducts())
     setProgress(100)
+
   };
+
+  if (isAuthenticated) return <Navigate to={"/"} />;
 
   return (
     <div id="signin_page">

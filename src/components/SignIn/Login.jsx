@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import "./signin.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../action/userAction";
+import { getProducts } from "../../action/productAction";
 
 const Login = ({setProgress}) => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ const Login = ({setProgress}) => {
     setProgress(10)
     e.preventDefault();
     await dispatch(loginUser(email, password));
+    setProgress(60)
+    await dispatch(getProducts())
     setProgress(100)
   };
 

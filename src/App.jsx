@@ -42,7 +42,7 @@ function App() {
         <Route
           exact
           path="/register"
-          element={isAuthenticated ? <Home /> : <Signup  setProgress={setProgress}/>}
+          element={<Signup  setProgress={setProgress}/>}
         />
         <Route
           exact
