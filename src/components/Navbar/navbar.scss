@@ -1,0 +1,277 @@
+@import "../../styles/feature.scss";
+.nav-belt {
+  display: flex;
+  max-width: 100%;
+  background-color: #131921;
+  height: 60px;
+  cursor: pointer;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  .nav-left {
+    display: flex;
+    width: 100%;
+    position: relative;
+    width: 318px;
+
+    .nav-left-box {
+      width: 100%;
+      padding: 0px 10px;
+      margin: 4px;
+      position: relative;
+      @include flex;
+
+      &:hover {
+        border: 1px solid white;
+        border-radius: 3px;
+      }
+    }
+
+    &:hover {
+      img {
+        border: 1px solid white;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .nav-mid {
+    display: flex;
+    position: relative;
+    width: 800px;
+    background-color: white;
+    border-radius: 4px;
+    height: 40px;
+    align-self: center;
+
+    .nav-box3 {
+      @include flex;
+      width: 56px !important;
+      height: 40px !important;
+      margin-left: 0px;
+      background-color: rgb(247, 247, 247);
+      border-right: 1px solid rgb(190, 190, 190);
+      border-radius: 2px;
+
+      &:hover {
+        background-color: rgb(236, 236, 236);
+      }
+
+      > a {
+        text-decoration: none;
+        color: black !important;
+        font-size: 13px;
+      }
+
+      > a:visited {
+        text-decoration: none;
+        color: black !important;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .nav-box4 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-search {
+    margin-top: 2px;
+    width: 100%;
+    height: 31px;
+    border: solid rgb(255, 255, 255);
+
+    &::placeholder {
+      font-size: 15px;
+    }
+  }
+
+  .nav-box5 {
+    @include flex;
+    color: black !important;
+    width: 50px !important;
+    height: 40px !important;
+    background-color: rgb(247, 182, 4);
+    border-radius: 2px;
+
+    &:hover {
+      background-color: rgb(221, 166, 14);
+    }
+
+    img {
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  .nav-right {
+    @include flex;
+    width: 400px;
+  }
+
+  .nav-right-box {
+    margin: 0px 5px 0px 3px;
+    padding: 0px 9px 0px 9px;
+    font-size: 13px;
+
+    &:hover {
+      border: 1px solid white;
+      border-radius: 3px;
+    }
+  }
+
+  .nav-box7 {
+    @include flex;
+    font-weight: bold;
+    font-size: 17px;
+
+    span {
+      color: rgb(247, 182, 4);
+    }
+    a {
+      color: white;
+    }
+  }
+
+  .nav-box9 {
+    @include flex;
+    flex-wrap: nowrap;
+    position: relative;
+    img {
+      height: 40px;
+    }
+    .cart_number {
+      position: absolute;
+      font-size: 18px;
+      font-weight: bold;
+      color: rgb(226, 145, 5);
+      background-color: #131921;
+      top: 0;
+      left: 30px;
+      padding: 2px;
+    }
+  }
+
+  .nav-box {
+    height: 50px;
+    color: aliceblue;
+  }
+}
+
+.nav-belt-mini {
+  display: flex;
+  background-color: #232f3e;
+  color: white;
+  height: 40px;
+  cursor: pointer;
+
+  .nav-mini-box:hover {
+    border: 1px solid white;
+    border-radius: 2px;
+  }
+
+  .nav-mini-left {
+    /* border: 2px solid red; */
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0px 0px 0px 10px;
+    padding-right: 6px;
+  }
+
+  .burger {
+    /* border: 2px solid red; */
+    width: 27px;
+    height: 29px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+
+    .line {
+      width: 18px;
+      height: 2.3px;
+      margin-top: 4.2px;
+      background-color: #ffffff;
+      border-radius: 2px;
+    }
+  }
+
+  .nav-mini-mid {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    left: 0;
+
+    .nav-mini-mid-box {
+      height: 97%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0px 10px 0px 10px;
+      font-size: 14px;
+
+      &:hover {
+        border: 1px solid white;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .nav-mini-right {
+    width: 410px;
+    margin: 0px 0px 0px 18px;
+    display: flex;
+    align-items: center;
+
+    img {
+      position: relative;
+      width: 410px;
+      /* height: 100%; */
+      padding: 0px 0px 5px 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .nav-belt {
+    .nav-left {
+      .nav-left-box {
+        margin: 4px 0px;
+        padding: 0px 4px;
+      }
+    }
+    .nav-mid {
+      display: none;
+    }
+    .nav-box7 {
+      font-size: 14px;
+    }
+    .nav-box9 {
+      padding: 0;
+      h3 {
+        font-size: 13px;
+      }
+      img {
+        height: 30px;
+      }
+      .cart_number {
+        font-size: 14px;
+        top: 3px;
+        left: 15px;
+        padding: 2px;
+      }
+    }
+  }
+}
