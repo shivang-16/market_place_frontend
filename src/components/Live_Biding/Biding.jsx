@@ -6,7 +6,7 @@ import ReactScrollToBottom from "react-scroll-to-bottom";
 import Message from "./Message";
 import "./bidding.scss";
 
-const socket = io.connect(import.meta.env.VITE_WEBSOCKET_SERVER);
+const socket = io.connect('http://localhost:4500n');
 
 const Biding = () => {
   const { user } = useSelector((state) => state.user);
