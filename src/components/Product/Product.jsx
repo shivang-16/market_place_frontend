@@ -1,28 +1,42 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../action/productAction";
 import { checkout } from "../../action/productAction";
 import { loadUser } from "../../action/userAction";
 import "./product.scss";
+import LoadingBar from 'react-top-loading-bar'
 
 const Product = ({ item_name, description, image, itemId }) => {
   const { user } = useSelector((state) => state.user);
+   
+  const [progress, setProgress] = useState(0)
 
   const dispatch = useDispatch();
 
   const handleCart = async () => {
+    setProgress(10)
     await dispatch(addToCart(itemId));
+    setProgress(70)
     dispatch(loadUser());
+    setProgress(100)
   };
 
-  const handleCheckout = () => {
-    dispatch(checkout(itemId));
+  const handleCheckout = async() => {
+    setProgress(10)
+    await dispatch(checkout(itemId));
+    setProgress(100)
   };
 
   const isAddedtoCart =
     user && user.cart && user.cart.some((item) => item._id === itemId);
 
   return (
+    <>
+    <LoadingBar
+    color='#E29105'
+    progress={progress}
+    onLoaderFinished={() => setProgress(0)}
+  />
     <div className="course-box">
       <img src={image?.url} />
       <div className="course-content">
@@ -37,6 +51,7 @@ const Product = ({ item_name, description, image, itemId }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

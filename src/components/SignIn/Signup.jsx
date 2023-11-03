@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../action/userAction";
 
-const Signup = () => {
+const Signup = ({setProgress}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const handleSignup = (e) => {
+    setProgress(10)
     e.preventDefault();
     dispatch(registerUser(name, email, password));
+    setProgress(100)
   };
 
   return (

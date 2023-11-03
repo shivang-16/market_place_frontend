@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useSelector } from "react-redux";
-import logo from "../../assets/amazon.png";
 import searchIcon from "../../assets/search-icon.png";
 import cartIcon from "../../assets/cart.png";
 
@@ -30,7 +29,7 @@ const Navbar = () => {
             <input type="text" className="nav-search" placeholder="Search" />
           </div>
           <div className="nav-box nav-mid-box nav-box5">
-            <mg src={searchIcon} alt="search" />
+            <img src={searchIcon} alt="search" />
           </div>
         </div>
         <div className="nav-right">
@@ -69,10 +68,7 @@ const Navbar = () => {
           </span>
         </div>
         <div className="nav-mini-mid">
-          <div className="nav-mini-mid-box1 nav-mini-mid-box">
-            Amazon miniTV
-          </div>
-          <div className="nav-mini-mid-box2 nav-mini-mid-box">Sell</div>
+           <div className="nav-mini-mid-box2 nav-mini-mid-box">Sell</div>
           <div className="nav-mini-mid-box3 nav-mini-mid-box">Best Sellers</div>
           <div className="nav-mini-mid-box4 nav-mini-mid-box">Mobiles</div>
           <div className="nav-mini-mid-box5 nav-mini-mid-box">

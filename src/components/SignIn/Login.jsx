@@ -4,15 +4,17 @@ import "./signin.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../action/userAction";
 
-const Login = () => {
+const Login = ({setProgress}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.user);
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
+    setProgress(10)
     e.preventDefault();
-    dispatch(loginUser(email, password));
+    await dispatch(loginUser(email, password));
+    setProgress(100)
   };
 
   if (isAuthenticated) return <Navigate to={"/"} />;

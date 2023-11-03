@@ -12,7 +12,7 @@ import { logoutUser } from "../../action/userAction";
 import Navbar from "../Navbar/Navbar";
 import { deleteItem } from "../../action/productAction";
 
-const Dashboard = () => {
+const Dashboard = ({setProgress}) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState("");
@@ -53,6 +53,7 @@ const Dashboard = () => {
   };
 
   const handleAddProduct = async (e) => {
+    setProgress(10)
     e.preventDefault();
     const formdata = new FormData();
 
@@ -61,7 +62,12 @@ const Dashboard = () => {
     formdata.append("price", price);
     formdata.append("file", image);
 
+    setProgress(50)
+
     await dispatch(createProduct(formdata));
+
+    setProgress(70)
+
     dispatch(loadUser());
     dispatch(getProducts());
     setPopupOpen(false);
@@ -70,12 +76,17 @@ const Dashboard = () => {
     setPrice("");
     setImage("");
     setImagePreview("");
+
+    setProgress(100)
   };
 
   const handleDelete = async (itemId) => {
+    setProgress(10)
     await dispatch(deleteItem(itemId));
+    setProgress(60)
     dispatch(loadUser());
     dispatch(getProducts());
+    setProgress(100)
   };
 
   const handleEdit = async (itemId) => {};
